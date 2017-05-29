@@ -49,13 +49,12 @@ public class CatchDataExceptionParserPlugin
                     lineNumber++;
 
                     try {
-                        Exec.getLogger(CatchDataExceptionParserPlugin.class).warn("{} poll: {}", CatchDataExceptionParserPlugin.class.getName(), poll);
                         builder.setString(column, poll);
                         builder.addRecord();
                     }
                     catch (DataException e) {
                         String m = String.format("class: %s, line number: %d", CatchDataExceptionParserPlugin.class.getName(), lineNumber);
-                        Exec.getLogger(CatchDataExceptionParserPlugin.class).error(
+                        Exec.getLogger(CatchDataExceptionParserPlugin.class).warn(
                                 m + e.getMessage(), e);
                     }
                 }
